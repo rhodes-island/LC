@@ -14,7 +14,22 @@ public interface LogininfoService {
 	
 	
 	Logininfo selectByPrimaryKey(Long id);
-	
-	//通过username和password查询 register
-	Logininfo selectByUnamePwd(String username,String password);
+
+	/**
+	 * 注册方法
+	 * 通过username和password查询 Logininfo用户表
+	 * 查看是否已经存在相同用户名
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	void selectByUnamePwd(String username,String password);
+
+	/**
+	 * 注册方法
+	 * 通过uesrname检测是否有该用户名
+	 * @param username
+	 * @return
+	 */
+	boolean checkUsername(String username);
 }

@@ -25,9 +25,10 @@ public class LoginifoController {
 		return "showLogininfo";
 	}
 
-	@RequestMapping("register.do")
+	@RequestMapping("register")
 	@ResponseBody
 	public JSONResult register(String username,String password) {
+		System.out.println("register");
 		JSONResult json = new JSONResult();
 		//有可能service抛出已经有这个用户的异常
 		try {
@@ -38,6 +39,13 @@ public class LoginifoController {
 			json.setMsg(re.getMessage());
 		}
 		return json;
+	}
+
+	@RequestMapping("checkUsername")
+	@ResponseBody
+	public Boolean checkUsername(String username) {
+		System.out.println("验证用户名");
+		return !this.logininfoService.checkUsername(username);
 	}
 	
 }

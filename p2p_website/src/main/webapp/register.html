@@ -31,7 +31,7 @@
 					required:true,
 					rangelength:[4,16],
 					remote:{
-						url:"checkUserName.do",  
+						url:"checkUsername",
 						type:"post"
 					}
 				},
@@ -65,6 +65,7 @@
 					success:function(data){
 						if(data.success){
 							$.messager.confirm("提示","注册成功")
+
 						}else{
 							$.messager.popup("注册失败!")
 						}
@@ -78,10 +79,10 @@
 			unhighlight:function(element){
 				$(element).closest("div.form-group").removeClass("has-error");
 			}
-			
-			
-			
-		})	
+
+
+
+		})
 	})
 </script>
 </head>
@@ -108,8 +109,8 @@
 	</div>
 	
 	<!-- 网页内容 -->
-	<div class="container">  
-		<form id="registerForm" class="form-horizontal el-register-form"  action="/register.do" method="post" >
+	<div class="container">
+		<form id="registerForm" class="form-horizontal el-register-form"  action="/register" method="post" >
 			<p class="h4" style="margin: 10px 10px 20px;color:#999;">请填写注册信息，点击“提交注册”即可完成注册！</p>
 			<div class="form-group">
 				<label class="control-label col-sm-2">用户名</label>
@@ -131,9 +132,11 @@
 					<input type="password" autocomplete="off" name="confirmPwd" class="form-control" />
 					<p class="help-block">请再次填写密码</p>	 
 				</div>
-			</div> 
+			</div>
+			<button type="submit">注册</button>
 			<div class="form-gorup">   
-				<div class="col-sm-offset-2">  
+				<div class="col-sm-offset-2">
+
 					<button type="submit" class="btn btn-success">
 						同意协议并注册
 					</button>

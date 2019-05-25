@@ -33,8 +33,9 @@
 						bidRequestAmount:{
 							required:true,
 							number:true,
-							min:${minBidRequestAmount},
-							max:${account.remainBorrowLimit?string("##.00")}
+							min:1000<#--${minBidRequestAmount}-->,
+							max:100000<#--${account.remainBorrowLimit?string("##.00")}-->
+
 						},
 						currentRate:{
 							required:true,
@@ -45,7 +46,8 @@
 						minBidAmount:{
 							required:true,
 							number:true,
-							min:${minBidAmount}
+							min:1000
+							<#--${minBidAmount}-->
 						},
 						title:"required"
 					},
@@ -98,7 +100,7 @@
 			<div class="el-tip-info">
 				<h3>信用借款</h3>
 				<p>
-					<span class="text-info">可借金额：</span><span class="text-danger">${account.remainBorrowLimit}</span>
+					<span class="text-info">可借金额：</span><span class="text-danger">100000</span>
 				</p>
 			</div>
 

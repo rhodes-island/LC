@@ -31,7 +31,7 @@
 					required:true,
 					rangelength:[4,16],
 					remote:{
-						url:"checkUsername",
+						url:"checkUserName.do",  
 						type:"post"
 					}
 				},
@@ -64,8 +64,9 @@
 					dataType:"json",
 					success:function(data){
 						if(data.success){
-							$.messager.confirm("提示","注册成功")
-
+							$.messager.confirm("提示","注册成功",function(){
+								window.location.href="/login.html";
+							})
 						}else{
 							$.messager.popup("注册失败!")
 						}
@@ -79,10 +80,10 @@
 			unhighlight:function(element){
 				$(element).closest("div.form-group").removeClass("has-error");
 			}
-
-
-
-		})
+			
+			
+			
+		})	
 	})
 </script>
 </head>
@@ -91,9 +92,9 @@
 	<div class="el-header" >
 		<div class="container" style="position: relative;">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">首页</a></li>
+				<li><a href="/index.do">首页</a></li>
 				<li><a href="/login.html">登录</a></li>
-				<li><a href="#">帮助</a></li>
+				<li><a href="/help.html">帮助</a></li>
 			</ul>
 		</div>
 	</div>
@@ -109,8 +110,8 @@
 	</div>
 	
 	<!-- 网页内容 -->
-	<div class="container">
-		<form id="registerForm" class="form-horizontal el-register-form"  action="/register" method="post" >
+	<div class="container">  
+		<form id="registerForm" class="form-horizontal el-register-form"  action="/register.do" method="post" >
 			<p class="h4" style="margin: 10px 10px 20px;color:#999;">请填写注册信息，点击“提交注册”即可完成注册！</p>
 			<div class="form-group">
 				<label class="control-label col-sm-2">用户名</label>
@@ -132,11 +133,9 @@
 					<input type="password" autocomplete="off" name="confirmPwd" class="form-control" />
 					<p class="help-block">请再次填写密码</p>	 
 				</div>
-			</div>
-			<button type="submit">注册</button>
+			</div> 
 			<div class="form-gorup">   
-				<div class="col-sm-offset-2">
-
+				<div class="col-sm-offset-2">  
 					<button type="submit" class="btn btn-success">
 						同意协议并注册
 					</button>
@@ -144,7 +143,7 @@
 					<a href="/login.html" class="text-primary">已有账号，马上登录</a>
 					
 					<p style="padding-left: 50px;margin-top: 15px;">
-						<a href="#">《使用协议说明书》</a>
+						<a href="/agreement.html">《使用协议说明书》</a>
 					</p>
 				</div>
 			</div>

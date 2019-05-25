@@ -2,13 +2,14 @@ package com.demo.p2p.base.service.impl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.p2p.base.mapper.LogininfoMapper;
 import com.demo.p2p.base.pojo.Logininfo;
 import com.demo.p2p.base.pojo.LogininfoExample;
-import com.demo.p2p.base.pojo.LogininfoExample.Criteria;
 import com.demo.p2p.base.service.LogininfoService;
 import com.demo.p2p.base.util.MD5;
 
@@ -16,6 +17,8 @@ import com.demo.p2p.base.util.MD5;
 public class LogioninfoServiceImpl implements LogininfoService {
 	@Autowired
 	private LogininfoMapper logininfoMapper;
+	@Autowired
+	private HttpSession session;
 
 	@Override
 	public Logininfo selectByPrimaryKey(Long id) {
@@ -74,6 +77,7 @@ public class LogioninfoServiceImpl implements LogininfoService {
 		// 否则，抛出异常
 		if (list.size() != 0) {
 			// 将用户的信息存储到session里面
+			session.setAttribute("user", list);
 		} else {
 			// 抛出异常如果用户不存在
 			throw new RuntimeException("用户或密码错误！");

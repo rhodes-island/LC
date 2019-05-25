@@ -50,6 +50,7 @@ public class LoginifoController {
 	}
 	
 	//用户登录验证
+	//如果是Json格式返回一定要加注解否则404s
 	@RequestMapping("/login.do")
 	@ResponseBody
 	public JSONResult login(String username,String password) {

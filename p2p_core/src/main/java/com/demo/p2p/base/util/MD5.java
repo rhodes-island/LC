@@ -1,6 +1,22 @@
+/*
+ * Copyright 2006-2008 the original author or authors.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.demo.p2p.base.util;
 
 public class MD5 {
+
 	static final int S11 = 7;
 
 	static final int S12 = 12;
@@ -55,6 +71,35 @@ public class MD5 {
 	public static String encode(String s) {
 		MD5 m = new MD5();
 		return m.getMD5ofStr(s);
+	}
+
+	public static void main(String args[]) {
+		System.out.println(MD5.encode("1"));
+
+		/*MD5 m = new MD5();
+		if (Array.getLength(args) == 0) {
+			System.out.println("MD5 Test suite:");
+			System.out.println("MD5(\"\"):".concat(String.valueOf(String
+					.valueOf(m.getMD5ofStr("")))));
+			System.out.println("MD5(\"a\"):".concat(String.valueOf(String
+					.valueOf(m.getMD5ofStr("a")))));
+			System.out.println("MD5(\"abc\"):".concat(String.valueOf(String
+					.valueOf(m.getMD5ofStr("abc")))));
+			System.out.println("MD5(\"message digest\"):".concat(String
+					.valueOf(String.valueOf(m.getMD5ofStr("message digest")))));
+			System.out.println("MD5(\"abcdefghijklmnopqrstuvwxyz\"):"
+					.concat(String.valueOf(String.valueOf(m
+							.getMD5ofStr("abcdefghijklmnopqrstuvwxyz")))));
+			System.out
+					.println("MD5(\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\"):"
+							.concat(String
+									.valueOf(String
+											.valueOf(m
+													.getMD5ofStr("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")))));
+		} else
+			System.out.println(String.valueOf(String.valueOf((new StringBuffer(
+					"MD5(")).append(args[0]).append(")=").append(
+					m.getMD5ofStr(args[0])))));*/
 	}
 
 	private long state[];
@@ -278,8 +323,5 @@ public class MD5 {
 		} else
 			i = 0;
 		md5Memcpy(buffer, inbuf, index, i, inputLen - i);
-	}
-	public static void main(String[] args) {
-		System.out.println(MD5.encode("1"));
 	}
 }

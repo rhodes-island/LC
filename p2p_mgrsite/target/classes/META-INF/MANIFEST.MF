@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: p2p_mgrsite
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: 58316
+Built-By: Administrator
 Implementation-Vendor-Id: com.demo.p2p
-Build-Jdk: 1.8.0_171
+Build-Jdk: 1.8.0_66
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/p2p_parent/p2p_mgrsite
 Created-By: Maven Integration for Eclipse

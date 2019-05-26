@@ -1,31 +1,27 @@
 package com.demo.p2p.base.mapper;
 
+
 import com.demo.p2p.base.pojo.Logininfo;
-import com.demo.p2p.base.pojo.LogininfoExample;
+
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface LogininfoMapper {
-	long countByExample(LogininfoExample example);
+    int deleteByPrimaryKey(Long id);
 
-	int deleteByExample(LogininfoExample example);
+    int insert(Logininfo record);
 
-	int deleteByPrimaryKey(Long id);
+    Logininfo selectByPrimaryKey(Long id);
 
-	int insert(Logininfo record);
+    List<Logininfo> selectAll();
 
-	int insertSelective(Logininfo record);
+    int updateByPrimaryKey(Logininfo record);
 
-	List<Logininfo> selectByExample(LogininfoExample example);
+    /**
+     * 判断是否有该用户名
+     * @param username
+     * @return
+     */
+    int getCountByUsername(String username);
 
-	Logininfo selectByPrimaryKey(Long id);
-
-	// 两个参数必须要加注解
-	int updateByExampleSelective(@Param("record") Logininfo record, @Param("example") LogininfoExample example);
-
-	int updateByExample(@Param("record") Logininfo record, @Param("example") LogininfoExample example);
-
-	int updateByPrimaryKeySelective(Logininfo record);
-
-	int updateByPrimaryKey(Logininfo record);
 }

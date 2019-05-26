@@ -2,109 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.p2p.base.mapper.LogininfoMapper">
   <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Logininfo">
+
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="state" jdbcType="TINYINT" property="state" />
-    <result column="usertype" jdbcType="TINYINT" property="usertype" />
-    <result column="admin" jdbcType="BIT" property="admin" />
-    <result column="standbyone" jdbcType="VARCHAR" property="standbyone" />
-    <result column="standbytwo" jdbcType="VARCHAR" property="standbytwo" />
-    <result column="standbythree" jdbcType="BIGINT" property="standbythree" />
-    <result column="standbyfour" jdbcType="DECIMAL" property="standbyfour" />
+    <!--<result column="usertype" jdbcType="TINYINT" property="usertype" />-->
+    <!--<result column="admin" jdbcType="BIT" property="admin" />-->
+    <!--<result column="standbyone" jdbcType="VARCHAR" property="standbyone" />-->
+    <!--<result column="standbytwo" jdbcType="VARCHAR" property="standbytwo" />-->
+    <!--<result column="standbythree" jdbcType="BIGINT" property="standbythree" />-->
+    <!--<result column="standbyfour" jdbcType="DECIMAL" property="standbyfour" />-->
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, username, password, state, usertype, admin, standbyone, standbytwo, standbythree, 
-    standbyfour
-  </sql>
-  <select id="selectByExample" parameterType="com.demo.p2p.base.pojo.LogininfoExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from logininfo
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from logininfo
-    where id = #{id,jdbcType=BIGINT}
-  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from logininfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.demo.p2p.base.pojo.LogininfoExample">
-    delete from logininfo
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
+
   <insert id="insert" parameterType="com.demo.p2p.base.pojo.Logininfo">
     insert into logininfo (id, username, password, 
       state, usertype, admin, 
@@ -115,166 +30,7 @@
       #{standbyone,jdbcType=VARCHAR}, #{standbytwo,jdbcType=VARCHAR}, #{standbythree,jdbcType=BIGINT}, 
       #{standbyfour,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.demo.p2p.base.pojo.Logininfo">
-    insert into logininfo
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="username != null">
-        username,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="state != null">
-        state,
-      </if>
-      <if test="usertype != null">
-        usertype,
-      </if>
-      <if test="admin != null">
-        admin,
-      </if>
-      <if test="standbyone != null">
-        standbyone,
-      </if>
-      <if test="standbytwo != null">
-        standbytwo,
-      </if>
-      <if test="standbythree != null">
-        standbythree,
-      </if>
-      <if test="standbyfour != null">
-        standbyfour,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=TINYINT},
-      </if>
-      <if test="usertype != null">
-        #{usertype,jdbcType=TINYINT},
-      </if>
-      <if test="admin != null">
-        #{admin,jdbcType=BIT},
-      </if>
-      <if test="standbyone != null">
-        #{standbyone,jdbcType=VARCHAR},
-      </if>
-      <if test="standbytwo != null">
-        #{standbytwo,jdbcType=VARCHAR},
-      </if>
-      <if test="standbythree != null">
-        #{standbythree,jdbcType=BIGINT},
-      </if>
-      <if test="standbyfour != null">
-        #{standbyfour,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.demo.p2p.base.pojo.LogininfoExample" resultType="java.lang.Long">
-    select count(*) from logininfo
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update logininfo
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
-      </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.state != null">
-        state = #{record.state,jdbcType=TINYINT},
-      </if>
-      <if test="record.usertype != null">
-        usertype = #{record.usertype,jdbcType=TINYINT},
-      </if>
-      <if test="record.admin != null">
-        admin = #{record.admin,jdbcType=BIT},
-      </if>
-      <if test="record.standbyone != null">
-        standbyone = #{record.standbyone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.standbytwo != null">
-        standbytwo = #{record.standbytwo,jdbcType=VARCHAR},
-      </if>
-      <if test="record.standbythree != null">
-        standbythree = #{record.standbythree,jdbcType=BIGINT},
-      </if>
-      <if test="record.standbyfour != null">
-        standbyfour = #{record.standbyfour,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update logininfo
-    set id = #{record.id,jdbcType=BIGINT},
-      username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      state = #{record.state,jdbcType=TINYINT},
-      usertype = #{record.usertype,jdbcType=TINYINT},
-      admin = #{record.admin,jdbcType=BIT},
-      standbyone = #{record.standbyone,jdbcType=VARCHAR},
-      standbytwo = #{record.standbytwo,jdbcType=VARCHAR},
-      standbythree = #{record.standbythree,jdbcType=BIGINT},
-      standbyfour = #{record.standbyfour,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.demo.p2p.base.pojo.Logininfo">
-    update logininfo
-    <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=TINYINT},
-      </if>
-      <if test="usertype != null">
-        usertype = #{usertype,jdbcType=TINYINT},
-      </if>
-      <if test="admin != null">
-        admin = #{admin,jdbcType=BIT},
-      </if>
-      <if test="standbyone != null">
-        standbyone = #{standbyone,jdbcType=VARCHAR},
-      </if>
-      <if test="standbytwo != null">
-        standbytwo = #{standbytwo,jdbcType=VARCHAR},
-      </if>
-      <if test="standbythree != null">
-        standbythree = #{standbythree,jdbcType=BIGINT},
-      </if>
-      <if test="standbyfour != null">
-        standbyfour = #{standbyfour,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+
   <update id="updateByPrimaryKey" parameterType="com.demo.p2p.base.pojo.Logininfo">
     update logininfo
     set username = #{username,jdbcType=VARCHAR},
@@ -288,4 +44,24 @@
       standbyfour = #{standbyfour,jdbcType=DECIMAL}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <sql id="base_column">
+    id, username, password, state--, usertype, admin, standbyone, standbytwo, standbythree,
+--     standbyfour
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from logininfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from logininfo
+  </select>
+
+  <select id="getCountByUsername" resultType="int">
+    select count(id) from logininfo where username = #{username}
+  </select>
 </mapper>
